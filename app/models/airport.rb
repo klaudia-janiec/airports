@@ -6,4 +6,8 @@ class Airport < ApplicationRecord
   has_many :in_connected_airports,  through: :incoming_connections, source: :airport_a, foreign_key: :airport_b_id
 
   validates :name, :country, :y, :x, :elevation, presence: true
+
+  def to_s
+    [icao, city, country].compact.join(" ")
+  end
 end

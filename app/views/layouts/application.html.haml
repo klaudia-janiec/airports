@@ -16,26 +16,35 @@
           .panel-heading
             %h4.panel-title
               %a{ "data-toggle" =>"collapse", href: "#airports", "data-parent" => "#accordion" }
-                %i.glyphicon.glyphicon-home
-                %span Airports
+                %i.glyphicon.glyphicon-home.bigger
+                %span.bigger Airports
           .panel-collapse.collapse{ id: "airports" }
             .panel-body
               %ul.list-group
                 %li.list-group-item
                   = link_to(airports_path) do
-                    Show all
+                    %i.glyphicon.glyphicon-list.big
+                    %span.big SHOW
           .panel-heading
             %h4.panel-title
               %a{ "data-toggle" =>"collapse", href: "#connections", "data-parent" => "#accordion" }
-                %i.glyphicon.glyphicon-plane
-                %span Connections
+                %i.glyphicon.glyphicon-plane.bigger
+                %span.bigger Connections
           .panel-collapse.collapse{ id: "connections" }
             .panel-body
               %ul.list-group
                 %li.list-group-item
                   = link_to(connections_path) do
-                    Show all
+                    %i.glyphicon.glyphicon-list.big
+                    %span.big SHOW
                 %li.list-group-item
                   = link_to(new_connection_path) do
-                    Create
+                    %i.glyphicon.glyphicon-plus.big
+                    %span.big CREATE
+
+    -if flash[:error]&.any?
+      %div{ class: "col-xs-4 col-xs-offset-4 warning" }
+        - flash[:error].each do |error|
+          %div
+            = error
     = yield
