@@ -6,7 +6,36 @@
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', params[:controller], 'data-turbolinks-track': 'reload'
 
   %body
+    .navbar-fixed-left
+      = image_tag "travel.png", id: "travel"
+      .panel-group{ id: "accordion" }
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{ "data-toggle" =>"collapse", href: "#airports", "data-parent" => "#accordion" }
+                %i.glyphicon.glyphicon-home
+                %span Airports
+          .panel-collapse.collapse{ id: "airports" }
+            .panel-body
+              %ul.list-group
+                %li.list-group-item
+                  = link_to(airports_path) do
+                    Show all
+          .panel-heading
+            %h4.panel-title
+              %a{ "data-toggle" =>"collapse", href: "#connections", "data-parent" => "#accordion" }
+                %i.glyphicon.glyphicon-plane
+                %span Connections
+          .panel-collapse.collapse{ id: "connections" }
+            .panel-body
+              %ul.list-group
+                %li.list-group-item
+                  = link_to(connections_path) do
+                    Show all
+                %li.list-group-item
+                  = link_to(new_connection_path) do
+                    Create
     = yield

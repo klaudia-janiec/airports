@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228192453) do
+ActiveRecord::Schema.define(version: 20171228231110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,4 +26,14 @@ ActiveRecord::Schema.define(version: 20171228192453) do
     t.integer "elevation", null: false
   end
 
+  create_table "connections", force: :cascade do |t|
+    t.bigint "airport_a_id", null: false
+    t.bigint "airport_b_id", null: false
+    t.index ["airport_a_id", "airport_b_id"], name: "index_connections_on_airport_a_id_and_airport_b_id"
+    t.index ["airport_a_id"], name: "index_connections_on_airport_a_id"
+    t.index ["airport_b_id"], name: "index_connections_on_airport_b_id"
+  end
+
+  add_foreign_key "connections", "airports", column: "airport_a_id"
+  add_foreign_key "connections", "airports", column: "airport_b_id"
 end
