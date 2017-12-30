@@ -56,7 +56,7 @@ function addMarkers(map, airports) {
 
     new google.maps.Marker({
       position: { lat: parseFloat(airport.y), lng: parseFloat(airport.x) },
-      icon:'/assets/airport.png',
+      icon: window.airport_image,
       map: map,
       title: airport.icao.concat(", ").concat(airport.city).concat(", ").concat(airport.country)
     });
