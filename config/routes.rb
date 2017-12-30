@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "airports#index"
+  root "connections#index"
   resources :airports
   resources :connections
 end
