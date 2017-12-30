@@ -5,4 +5,8 @@ class AirportsController < ApplicationController
       format.json { render json: Airport.all }
     end
   end
+
+  def show
+    render json: Airport.find(params[:id])
+  end
 end

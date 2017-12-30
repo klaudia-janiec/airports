@@ -37,15 +37,27 @@
    }
  }
 
-#map, .container {
+#map {
   float: right;
   height: 100vh;
   width: 85%;
 }
 
+.flex-height {
+  position: absolute;
+  bottom: 0;
+  float: none;
+}
+
 .container {
+  float: right;
+  width: 85%;
   padding: 0;
   text-align: center;
+
+  #map {
+    height: 50%;
+  }
 }
 
 label {
