@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      connection:
+        airport_a: "Source port"
+        airport_b: "Destination port"
+    errors:
+      models:
+        connection:
+          attributes:
+            airport_a:
+              blank: "is required"
+            airport_b:
+              blank: "is required"
