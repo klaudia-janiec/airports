@@ -67,8 +67,7 @@ function addMarkers(map, airports) {
 
 $(document).on('turbolinks:load page:load', function() {
   var select_fields = document.getElementsByTagName("select");
-  for(id in select_fields) {
-    select_field = select_fields[id];
+  for(var select_field of select_fields) {
     if(select_field.id === "connection_airport_a_id" || select_field.id === "connection_airport_b_id") {
       select_field.addEventListener('change', focusMap, false);
     }
@@ -106,3 +105,4 @@ function focusMap() {
     });
   }
 }
+;
