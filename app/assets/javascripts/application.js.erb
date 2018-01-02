@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load page:load', function() {
   if(window.google) {
     initMap();
   } else {
@@ -34,4 +34,3 @@ function loadScript() {
 }
 
 window.airport_image = "<%= asset_path('airport.png') %>"
-console.log(window.airport_image);

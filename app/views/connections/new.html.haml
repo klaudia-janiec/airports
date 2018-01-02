@@ -2,17 +2,34 @@
   .header.navbar
     %h1
       CREATE CONNECTION
-  .col-xs-4.col-xs-offset-4
-    = form_for @connection, method: :post do |f|
-      = f.label :airport_a_id, "Source Airport"
-      = f.select(:airport_a_id) do
-        - @airports.each do |airport|
-          = content_tag(:option, airport.to_s, value: airport.id)
-      = f.label :airport_b_id, "Destination Airport"
-      = f.select(:airport_b_id) do
-        - @airports.each do |airport|
-          = content_tag(:option, airport.to_s, value: airport.id)
-      %br
+  = form_for @connection, method: :post do |f|
+    = field_set_tag "Source" do
+      .form-group
+        = label :country_a, "Country", class: "col-sm-3 control-label"
+        .col-sm-8
+          = select(:country_a, :name, selected: "") do
+            = content_tag(:option, "", value: 0)
+            - @countries.each do |country|
+              = content_tag(:option, country, value: country)
+      .form-group
+        = f.label :airport_a_id, "Airport", class: "col-sm-3 control-label"
+        .col-sm-8
+          = f.select(:airport_a_id, :airport_a_id, {}, disabled: true) do
+            = content_tag(:option, nil, value: 0)
+    = field_set_tag "Destination" do
+      .form-group
+        = f.label :airport_b_id, "Country", class: "col-sm-3 control-label"
+        .col-sm-8
+          = select(:country_b, :name, selected: "") do
+            = content_tag(:option, "", value: 0)
+            - @countries.each do |country|
+              = content_tag(:option, country, value: country)
+      .form-group
+        = f.label :airport_b_id, "Airport", class: "col-sm-3 control-label"
+        .col-sm-8
+          = f.select(:airport_b_id, :airport_b_id, {}, disabled: true) do
+            = content_tag(:option, nil, value: 0)
+    .clear-both
       = f.submit "Submit", class: "btn btn-info submit"
 
   #map.flex-height

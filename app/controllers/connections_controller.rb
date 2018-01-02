@@ -8,6 +8,7 @@ class ConnectionsController < ApplicationController
 
   def new
     @airports = Airport.all
+    @countries = Airport.all.pluck(:country).uniq.sort
     @connection = Connection.new
   end
 
@@ -17,7 +18,7 @@ class ConnectionsController < ApplicationController
     if @connection.save
       redirect_to connections_path
     else
-      redirect_to new_connection_path
+      redirect_to connections_path
       flash[:error] = @connection.errors.full_messages
     end
   end
