@@ -44,3 +44,5 @@ en:
               blank: "is required"
             airport_b:
               blank: "is required"
+            base:
+              different_airports: "Source airport and destination airport should be different"
