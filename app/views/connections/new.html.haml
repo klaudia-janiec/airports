@@ -3,10 +3,16 @@
     %h1
       CREATE CONNECTION
   .col-xs-4.col-xs-offset-4
-    = simple_form_for @connection do |f|
-      = f.input :airport_a_id, collection: @airports, label_method: lambda { |airport| airport.to_s }, :value_method => :id, :label => "SOURCE PORT"
-      = f.input :airport_b_id, collection: @airports, label_method: lambda { |airport| airport.to_s }, :value_method => :id, :label => "DESTINATION PORT"
+    = form_for @connection, method: :post do |f|
+      = f.label :airport_a_id, "Source Airport"
+      = f.select(:airport_a_id) do
+        - @airports.each do |airport|
+          = content_tag(:option, airport.to_s, value: airport.id)
+      = f.label :airport_b_id, "Destination Airport"
+      = f.select(:airport_b_id) do
+        - @airports.each do |airport|
+          = content_tag(:option, airport.to_s, value: airport.id)
       %br
-      = f.button :submit, "Submit", class: "btn btn-info submit"
+      = f.submit "Submit", class: "btn btn-info submit"
 
   #map.flex-height
