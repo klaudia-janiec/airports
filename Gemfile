@@ -22,9 +22,15 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'ransack'
 
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'fabrication'
 end
 
 group :development do
